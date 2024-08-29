@@ -1,6 +1,1 @@
-# Essential packages for the Shiny app and fetching art data
 requests
-
-# If you use temporary files and path management
-tempfile
-pathlib
