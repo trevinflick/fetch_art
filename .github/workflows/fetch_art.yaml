@@ -28,8 +28,8 @@ jobs:
 
       - name: Commit changes
         run: |
-          git config --global user.email "your-email@example.com"
-          git config --global user.name "Your GitHub Username"
+          git config --global user.email "twflick@gmail.com"
+          git config --global user.name "trevinflick"
           git add .
           git commit -m "Update art data"
           git push
