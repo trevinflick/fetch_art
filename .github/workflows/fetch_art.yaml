@@ -1,0 +1,37 @@
+name: Fetch Daily Art Data
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  fetch_art:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run fetch_art_data script
+        run: python fetch_art_data.py
+
+      - name: Commit changes
+        run: |
+          git config --global user.email "your-email@example.com"
+          git config --global user.name "Your GitHub Username"
+          git add .
+          git commit -m "Update art data"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
