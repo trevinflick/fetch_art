@@ -2,7 +2,7 @@ name: Fetch Daily Art Data
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '7 6 * * *'  # Runs at 6:07 AM UTC every day
   workflow_dispatch:
 
 jobs:
