@@ -23,21 +23,28 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Debug File Existence
+        run: |
+          ls -al
+          cat valid_art_ids.txt || echo "No valid_art_ids.txt found"
+
       - name: Run fetch_art_data script
         run: python fetch_art_data.py
 
-      - name: Check for changes
-        id: check_for_changes
+      - name: Debug Git Status
+        run: |
+          git status
+          git diff
+          git diff --cached
+
+      - name: Commit changes
         run: |
           git config --global user.email "twflick@gmail.com"
           git config --global user.name "trevinflick"
-          git diff --quiet || echo "changes detected"
-
-      - name: Commit changes
-        if: steps.check_for_changes.outputs.changes_exist != ''
-        run: |
-          git add .
-          git commit -m "Update art data"
+          git add art_data.json
+          git status
+          git diff --cached
+          git commit -m "Update art data" || echo "No changes to commit"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
