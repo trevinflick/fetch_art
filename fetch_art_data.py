@@ -14,21 +14,28 @@ def fetch_random_art_data():
     import random
     random_index = random.randint(1, total_artworks)
 
-    # Step 3: Fetch the random artwork data
-    params = {"fields": "id,title,image_id,artist_display,short_description", "limit": 1, "page": random_index}
-    response = requests.get(api_url, params=params)
-    response.raise_for_status()
-    data = response.json()["data"][0]  # Get the first (and only) item from data
+    while True:  # Continue fetching until an artwork with a description is found
+        # Step 2: Generate a random artwork ID
+        random_index = random.randint(1, total_artworks)
 
-    image_url = f"https://www.artic.edu/iiif/2/{data['image_id']}/full/400,/0/default.jpg"
-    description = data.get("short_description", "No description available")
-    artist_display = data.get("artist_display", "No artist information available")
-    title = data.get("title", "No title available")
+        # Step 3: Fetch the random artwork data
+        params = {"fields": "id,title,image_id,artist_display,short_description", "limit": 1, "page": random_index}
+        response = requests.get(api_url, params=params)
+        response.raise_for_status()
+        data = response.json()["data"][0]  # Get the first (and only) item from data
 
-    # Formatting artist name and additional details
-    formatted_artist_info = format_artist_info(artist_display)
+        # Check if the artwork has a description
+        description = data.get("short_description", "")
+        if description:  # If there is a description, break the loop and return the data
+            image_url = f"https://www.artic.edu/iiif/2/{data['image_id']}/full/400,/0/default.jpg"
+            artist_display = data.get("artist_display", "No artist information available")
+            title = data.get("title", "No title available")
+
+            # Formatting artist name and additional details
+            formatted_artist_info = format_artist_info(artist_display)
+            
+            return image_url, description, formatted_artist_info, title
     
-    return image_url, description, formatted_artist_info, title
 
 def format_artist_info(artist_display):
     parts = artist_display.split(", ")
