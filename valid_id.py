@@ -2,7 +2,7 @@ import json
 import os
 
 # Path to the directory containing JSON files
-json_dir = '/Users/trevin/Documents/artic-api-data/json/artworks'
+json_dir = '~/artic-api-data/json/artworks'
 valid_art_ids = []
 
 # Iterate over the JSON files in the directory
