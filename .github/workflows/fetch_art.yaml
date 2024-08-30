@@ -26,10 +26,16 @@ jobs:
       - name: Run fetch_art_data script
         run: python fetch_art_data.py
 
-      - name: Commit changes
+      - name: Check for changes
+        id: check_for_changes
         run: |
           git config --global user.email "twflick@gmail.com"
           git config --global user.name "trevinflick"
+          git diff --quiet || echo "changes detected"
+
+      - name: Commit changes
+        if: steps.check_for_changes.outputs.changes_exist != ''
+        run: |
           git add .
           git commit -m "Update art data"
           git push
