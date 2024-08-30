@@ -4,47 +4,33 @@ from datetime import date
 import random
 import time
 
-def fetch_random_art_data(max_attempts=10, timeout=5):
-    # Step 1: Get the total number of artworks
-    api_url = "https://api.artic.edu/api/v1/artworks"
-    params = {"fields": "id", "limit": 1}  # We just need to know the total count
+def read_valid_art_ids(filename="valid_art_ids.txt"):
+    """Read valid art IDs from a text file."""
+    with open(filename, "r") as file:
+        valid_ids = [line.strip() for line in file.readlines()]
+    return valid_ids
+
+def fetch_art_data_by_id(art_id, timeout=5):
+    """Fetch the art data for a specific artwork ID."""
+    api_url = f"https://api.artic.edu/api/v1/artworks/{art_id}"
+    params = {"fields": "id,title,image_id,artist_display,short_description"}
     response = requests.get(api_url, params=params, timeout=timeout)
     response.raise_for_status()
-    total_artworks = response.json()["pagination"]["total"]
+    data = response.json()["data"]  # Get the artwork data
 
-    # Step 2: Attempt to fetch an artwork with a non-null image_id
-    for attempt in range(max_attempts):
-        random_index = random.randint(1, total_artworks)
-        
-        # Step 3: Fetch the random artwork data
-        params = {
-            "fields": "id,title,image_id,artist_display,short_description",
-            "limit": 1,
-            "page": random_index
-        }
-        response = requests.get(api_url, params=params, timeout=timeout)
-        response.raise_for_status()
-        data = response.json()["data"][0]  # Get the first (and only) item from data
+    # Fetch and format the necessary fields
+    image_url = f"https://www.artic.edu/iiif/2/{data['image_id']}/full/400,/0/default.jpg"
+    description = data.get("short_description", "No description available")
+    artist_display = data.get("artist_display", "No artist information available")
+    title = data.get("title", "No title available")
 
-        # Check if the image_id is not null
-        if data['image_id']:
-            # Fetch and format the necessary fields
-            art_id = data.get("id", "Unknown ID")
-            image_url = f"https://www.artic.edu/iiif/2/{data['image_id']}/full/400,/0/default.jpg"
-            description = data.get("short_description", "No description available")
-            artist_display = data.get("artist_display", "No artist information available")
-            title = data.get("title", "No title available")
-
-            # Formatting artist name and additional details
-            formatted_artist_info = format_artist_info(artist_display)
-            
-            return art_id, image_url, description, formatted_artist_info, title
-        
-        time.sleep(1)  # Sleep for a short period to avoid overwhelming the API
-
-    raise Exception("Failed to find an artwork with a non-null image_id after maximum attempts.")
+    # Formatting artist name and additional details
+    formatted_artist_info = format_artist_info(artist_display)
+    
+    return art_id, image_url, description, formatted_artist_info, title
 
 def format_artist_info(artist_display):
+    """Format artist information."""
     parts = artist_display.split(", ")
     if len(parts) >= 2:
         artist_name = parts[0]
@@ -57,8 +43,17 @@ def format_artist_info(artist_display):
 
 def save_art_data_to_file(filename="art_data.json"):
     try:
-        # Fetch random art data
-        art_id, image_url, description, artist_info, title = fetch_random_art_data()
+        # Read valid art IDs from file
+        valid_art_ids = read_valid_art_ids()
+        
+        if not valid_art_ids:
+            raise Exception("No valid art IDs found.")
+
+        # Choose a random art ID from the valid art IDs
+        art_id = random.choice(valid_art_ids)
+
+        # Fetch art data for the selected ID
+        art_id, image_url, description, artist_info, title = fetch_art_data_by_id(art_id)
         
         # Save data to a file
         art_data = {
