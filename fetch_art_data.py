@@ -22,7 +22,7 @@ def fetch_random_art_data(max_attempts=10, timeout=5):
     # Pick a random art ID from the list
     art_id = random.choice(art_ids)
     api_url = f"https://api.artic.edu/api/v1/artworks/{art_id}"
-    params = {"fields": "id,title,image_id,artist_display,short_description"}
+    params = {"fields": "id,title,image_id,artist_display,short_description,alt_text"}  # Include alt_text in fields
     
     for attempt in range(max_attempts):
         try:
@@ -36,11 +36,12 @@ def fetch_random_art_data(max_attempts=10, timeout=5):
                 description = data.get("short_description", "No description available")
                 artist_display = data.get("artist_display", "No artist information available")
                 title = data.get("title", "No title available")
+                alt_text = data.get("alt_text", "No alternative text available")  # Get alt_text
 
                 # Formatting artist name and additional details
                 formatted_artist_info = format_artist_info(artist_display)
                 
-                return art_id, image_url, description, formatted_artist_info, title
+                return art_id, image_url, description, formatted_artist_info, title, alt_text  # Include alt_text in return
 
         except Exception as e:
             print(f"Attempt {attempt + 1} failed: {e}")
@@ -61,8 +62,8 @@ def format_artist_info(artist_display):
 def save_art_data_to_file(filename="art_data.json"):
     try:
         # Fetch random art data
-        art_id, image_url, description, artist_info, title = fetch_random_art_data()
-        
+        art_id, image_url, description, artist_info, title, alt_text = fetch_random_art_data()  # Include alt_text in fetch
+
         # Save data to a file
         art_data = {
             "id": art_id,
@@ -70,7 +71,8 @@ def save_art_data_to_file(filename="art_data.json"):
             "image_url": image_url,
             "description": description,
             "artist_info": artist_info,
-            "title": title
+            "title": title,
+            "alt_text": alt_text  # Save alt_text
         }
 
         with open(filename, "w") as file:
