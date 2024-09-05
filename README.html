@@ -84,41 +84,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This Python script fetches random artwork information from the Art Institute of Chicago’s public API. It retrieves metadata such as the artwork title, image, artist details, description, and alternative text. The script saves the fetched data into a JSON file, allowing it to manage daily art fetches for integration into other projects or use in apps.</p>
 <section id="features" class="level2">
 <h2 class="anchored" data-anchor-id="features">Features</h2>
-<pre><code>- **Fetch random artwork** : Retrieves data for a randomly selected artwork from a list of valid IDs.
-- **Robust API handling** : Includes retries in case of failed API requests, ensuring reliable data fetching.
-- **Formatted artist information** : Displays artist details including name, country, and life dates (if available) in a readable format.
-- **Daily data saving** : Stores fetched artwork data into a art_data.json file, including the current date to enable managing daily fetches.
-- **Image and alternative text** : Fetches the artwork image URL and alt text for accessibility.</code></pre>
+<ul>
+<li><strong>Fetch random artwork</strong> : Retrieves data for a randomly selected artwork from a list of valid IDs.</li>
+<li><strong>Robust API handling</strong> : Includes retries in case of failed API requests, ensuring reliable data fetching.</li>
+<li><strong>Formatted artist information</strong> : Displays artist details including name, country, and life dates (if available) in a readable format.</li>
+<li><strong>Daily data saving</strong> : Stores fetched artwork data into a art_data.json file, including the current date to enable managing daily fetches.</li>
+<li><strong>Image and alternative text</strong> : Fetches the artwork image URL and alt text for accessibility.</li>
+</ul>
 </section>
 <section id="requirements" class="level2">
 <h2 class="anchored" data-anchor-id="requirements">Requirements</h2>
 <p>To use this script, you need:</p>
-<pre><code>- Python 3.x
-- Required libraries: `requests` , `json` , `os` , `random` , `time` , `datetime`</code></pre>
+<ul>
+<li>Python 3.x</li>
+<li>Required libraries: <code>requests</code> , <code>json</code> , <code>os</code> , <code>random</code> , <code>time</code> , <code>datetime</code></li>
+</ul>
 <p>Install the required libraries by running:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install requests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install requests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="how-it-works" class="level2">
 <h2 class="anchored" data-anchor-id="how-it-works">How It Works</h2>
-<pre><code>1. **Valid Art IDs** : The script reads a list of valid artwork IDs from a text file (valid_art_ids.txt). Each ID corresponds to an artwork in the Art Institute of Chicago's collection.
-
-2. **Fetching Artwork Data** : The script sends an HTTP request to the API to fetch a random artwork's metadata, including the title, artist, image, description, and alt text.
-
-3. **Retries and Timeout** : If a request fails or does not return a valid image or description, the script retries up to 10 times before giving up.
-
-4. **Saving Data** : The fetched data is saved in a JSON file (art_data.json), which includes:
-    Artwork ID
-    Fetch date
-    Image URL
-    Description
-    Artist information
-    Title
-    Alt text</code></pre>
+<ol type="1">
+<li><p><strong>Valid Art IDs</strong> : The script reads a list of valid artwork IDs from a text file (valid_art_ids.txt). Each ID corresponds to an artwork in the Art Institute of Chicago’s collection.</p></li>
+<li><p><strong>Fetching Artwork Data</strong> : The script sends an HTTP request to the API to fetch a random artwork’s metadata, including the title, artist, image, description, and alt text.</p></li>
+<li><p><strong>Retries and Timeout</strong> : If a request fails or does not return a valid image or description, the script retries up to 10 times before giving up.</p></li>
+<li><p><strong>Saving Data</strong> : The fetched data is saved in a JSON file (art_data.json), which includes: Artwork ID Fetch date Image URL Description Artist information Title Alt text</p></li>
+</ol>
 </section>
 <section id="file-structure" class="level2">
 <h2 class="anchored" data-anchor-id="file-structure">File Structure</h2>
-<pre><code>- valid_art_ids.txt: A file containing the list of valid artwork IDs (one ID per line).
-- art_data.json: Output file where the fetched artwork data is stored in JSON format.</code></pre>
+<ul>
+<li>valid_art_ids.txt: A file containing the list of valid artwork IDs (one ID per line).</li>
+<li>art_data.json: Output file where the fetched artwork data is stored in JSON format.</li>
+</ul>
 </section>
 </section>
 
