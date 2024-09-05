@@ -39,12 +39,13 @@ def fetch_random_art_data(max_attempts=10, timeout=5):
                 description = data.get("short_description", "No description available")
                 artist_display = data.get("artist_display", "No artist information available")
                 title = data.get("title", "No title available")
+                image_id = data.get("image_id", "No image ID available")
                 alt_text = data.get("alt_text", "No alternative text available")  # Get alt_text
 
                 # Formatting artist name and additional details
                 formatted_artist_info = format_artist_info(artist_display)
                 
-                return art_id, image_url_small, image_url_medium, image_url_large, image_url_full, description, formatted_artist_info, title, alt_text  # Include alt_text in return
+                return art_id, image_id, image_url_small, image_url_medium, image_url_large, image_url_full, description, formatted_artist_info, title, alt_text  # Include alt_text in return
 
         except Exception as e:
             print(f"Attempt {attempt + 1} failed: {e}")
@@ -65,12 +66,13 @@ def format_artist_info(artist_display):
 def save_art_data_to_file(filename="art_data.json"):
     try:
         # Fetch random art data
-        art_id, image_url_small, image_url_medium, image_url_large, image_url_full, description, artist_info, title, alt_text = fetch_random_art_data()  # Include alt_text in fetch
+        art_id, image_id, image_url_small, image_url_medium, image_url_large, image_url_full, description, artist_info, title, alt_text = fetch_random_art_data()  # Include alt_text in fetch
 
         # Save data to a file
         art_data = {
             "id": art_id,
-            "date": str(date.today()),  # Save the date to manage daily fetches
+            "date": str(date.today()),  # Save the date to manage daily fetches,
+            "image_id": image_id,
             "image_url_small": image_url_small,
             "image_url_medium": image_url_medium,
             "image_url_large": image_url_large,

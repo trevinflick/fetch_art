@@ -1,12 +1,13 @@
 {
-    "id": "16584",
+    "id": "110246",
     "date": "2024-09-04",
-    "image_url_small": "https://www.artic.edu/iiif/2/03930df3-1e6c-eeca-8660-c0b22ca477ff/full/200,/0/default.jpg",
-    "image_url_medium": "https://www.artic.edu/iiif/2/03930df3-1e6c-eeca-8660-c0b22ca477ff/full/400,/0/default.jpg",
-    "image_url_large": "https://www.artic.edu/iiif/2/03930df3-1e6c-eeca-8660-c0b22ca477ff/full/600,/0/default.jpg",
-    "image_url_full": "https://www.artic.edu/iiif/2/03930df3-1e6c-eeca-8660-c0b22ca477ff/full/843,/0/default.jpg",
-    "description": "Monet painted the Houses of Parliament in the afternoon and at sunset from a terrace at Saint Thomas\u2019s Hospital. This viewpoint was close to that of the English artist J. M. W. Turner in his visionary paintings of the fire that had destroyed much of the old Parliament complex in 1834. In his response to the poetry of dusk and mist, however, Monet was actually inspired by the work of a more recent painter of the Thames, James McNeill Whistler.",
-    "artist_info": "Claude Monet (French\n1840\u20131926), ",
-    "title": "Houses of Parliament, London",
+    "image_id": "21fb136f-402e-1116-4e43-40ac73d3b2e8",
+    "image_url_small": "https://www.artic.edu/iiif/2/21fb136f-402e-1116-4e43-40ac73d3b2e8/full/200,/0/default.jpg",
+    "image_url_medium": "https://www.artic.edu/iiif/2/21fb136f-402e-1116-4e43-40ac73d3b2e8/full/400,/0/default.jpg",
+    "image_url_large": "https://www.artic.edu/iiif/2/21fb136f-402e-1116-4e43-40ac73d3b2e8/full/600,/0/default.jpg",
+    "image_url_full": "https://www.artic.edu/iiif/2/21fb136f-402e-1116-4e43-40ac73d3b2e8/full/843,/0/default.jpg",
+    "description": "In Central America, the best-known ancient sculptors are the Maya, who decorated their sacred buildings with finely carved stone reliefs. This fragmentary ball-court panel from the late eighth century shows two men, dressed in elaborate costumes, engaged in a ritual ball game. Surrounding the figures, and clearly set off from them, are fragments of hieroglyphs by which the Maya identified the players and the date on which the game occurred.",
+    "artist_info": "Late Classic Maya\nProbably La Corona (Saknikte\u2019)\nUsumacinta River area, Guatemala",
+    "title": "Chak Ak\u2019 Paat Kuy (\"Red Turkey\") Playing the Ballgame",
     "alt_text": "No alternative text available"
 }
