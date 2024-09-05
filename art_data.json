@@ -1,9 +1,12 @@
 {
-    "id": "263225",
+    "id": "16584",
     "date": "2024-09-04",
-    "image_url": "https://www.artic.edu/iiif/2/0e78277c-bdbe-4a92-01f2-8f7be3ff298c/full/400,/0/default.jpg",
-    "description": "In the summer of 1940, Georgia O'Keeffe found an inspiring sight: \u201cThe places you can go on a horse here always astonish me . . . the most exciting was being on top of a ridge of red hills and seeing the blue flat topped mountains above them\u2014it was very good.\u201d She painted this work a month later, depicting bushes of small white flowers growing from the eroded gullies of the red badland, the blue mesa barely visible to the right.",
-    "artist_info": "Georgia O'Keeffe (American\n1887\u20131986), ",
-    "title": "Red Hills with Flowers",
+    "image_url_small": "https://www.artic.edu/iiif/2/03930df3-1e6c-eeca-8660-c0b22ca477ff/full/200,/0/default.jpg",
+    "image_url_medium": "https://www.artic.edu/iiif/2/03930df3-1e6c-eeca-8660-c0b22ca477ff/full/400,/0/default.jpg",
+    "image_url_large": "https://www.artic.edu/iiif/2/03930df3-1e6c-eeca-8660-c0b22ca477ff/full/600,/0/default.jpg",
+    "image_url_full": "https://www.artic.edu/iiif/2/03930df3-1e6c-eeca-8660-c0b22ca477ff/full/843,/0/default.jpg",
+    "description": "Monet painted the Houses of Parliament in the afternoon and at sunset from a terrace at Saint Thomas\u2019s Hospital. This viewpoint was close to that of the English artist J. M. W. Turner in his visionary paintings of the fire that had destroyed much of the old Parliament complex in 1834. In his response to the poetry of dusk and mist, however, Monet was actually inspired by the work of a more recent painter of the Thames, James McNeill Whistler.",
+    "artist_info": "Claude Monet (French\n1840\u20131926), ",
+    "title": "Houses of Parliament, London",
     "alt_text": "No alternative text available"
 }

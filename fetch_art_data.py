@@ -65,13 +65,16 @@ def format_artist_info(artist_display):
 def save_art_data_to_file(filename="art_data.json"):
     try:
         # Fetch random art data
-        art_id, image_url, description, artist_info, title, alt_text = fetch_random_art_data()  # Include alt_text in fetch
+        art_id, image_url_small, image_url_medium, image_url_large, image_url_full, description, artist_info, title, alt_text = fetch_random_art_data()  # Include alt_text in fetch
 
         # Save data to a file
         art_data = {
             "id": art_id,
             "date": str(date.today()),  # Save the date to manage daily fetches
-            "image_url": image_url,
+            "image_url_small": image_url_small,
+            "image_url_medium": image_url_medium,
+            "image_url_large": image_url_large,
+            "image_url_full": image_url_full,
             "description": description,
             "artist_info": artist_info,
             "title": title,
