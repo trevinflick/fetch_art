@@ -32,7 +32,10 @@ def fetch_random_art_data(max_attempts=10, timeout=5):
 
             if data and data.get('image_id') and data.get('short_description'):
                 # Fetch and format the necessary fields
-                image_url = f"https://www.artic.edu/iiif/2/{data['image_id']}/full/400,/0/default.jpg"
+                image_url_small=f"https://www.artic.edu/iiif/2/{data['image_id']}/full/200,/0/default.jpg"
+                image_url_medium = f"https://www.artic.edu/iiif/2/{data['image_id']}/full/400,/0/default.jpg"
+                image_url_large=f"https://www.artic.edu/iiif/2/{data['image_id']}/full/600,/0/default.jpg"
+                image_url_full=f"https://www.artic.edu/iiif/2/{data['image_id']}/full/843,/0/default.jpg"
                 description = data.get("short_description", "No description available")
                 artist_display = data.get("artist_display", "No artist information available")
                 title = data.get("title", "No title available")
@@ -41,7 +44,7 @@ def fetch_random_art_data(max_attempts=10, timeout=5):
                 # Formatting artist name and additional details
                 formatted_artist_info = format_artist_info(artist_display)
                 
-                return art_id, image_url, description, formatted_artist_info, title, alt_text  # Include alt_text in return
+                return art_id, image_url_small, image_url_medium, image_url_large, image_url_full, description, formatted_artist_info, title, alt_text  # Include alt_text in return
 
         except Exception as e:
             print(f"Attempt {attempt + 1} failed: {e}")
