@@ -59,7 +59,12 @@ def format_artist_info(artist_display):
         artist_name = parts[0]
         country = parts[1]
         years = ", ".join(parts[2:]) if len(parts) > 2 else ""
-        return f"{artist_name}\n{country}, {years}"
+        
+        # Only include the comma if years is not empty
+        if years:
+            return f"{artist_name}\n{country}, {years}"
+        else:
+            return f"{artist_name}\n{country}"
     else:
         return artist_display
 
