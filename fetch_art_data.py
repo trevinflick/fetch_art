@@ -20,8 +20,7 @@ def fetch_random_art_data(max_attempts=10, timeout=5):
         raise Exception("No valid art IDs found.")
     
     # Pick a random art ID from the list
-    # art_id = random.choice(art_ids)
-    art_id = 27992
+    art_id = random.choice(art_ids)
     api_url = f"https://api.artic.edu/api/v1/artworks/{art_id}"
     params = {"fields": "id,title,image_id,artist_display,short_description,alt_text"}  # Include alt_text in fields
     
